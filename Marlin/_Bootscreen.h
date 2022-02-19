@@ -33,6 +33,7 @@
 
 #define CUSTOM_BOOTSCREEN_TIMEOUT 1000
 #define CUSTOM_BOOTSCREEN_BMPWIDTH  128
+#define CUSTOM_BOOTSCREEN_INVERTED
 
 const unsigned char custom_start_bmp[] PROGMEM = {
   0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF, // ################################################################################################################################
