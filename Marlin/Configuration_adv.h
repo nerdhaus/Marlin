@@ -1013,9 +1013,6 @@
 
   // Define position names for probe points.
   #define TRAMMING_POINT_NAME_1 "Front-Left"
-  #define TRAMMING_POINT_NAME_2 "Front-Right"
-  #define TRAMMING_POINT_NAME_3 "Back-Right"
-  #define TRAMMING_POINT_NAME_4 "Back-Left"
   #define TRAMMING_POINT_NAME_2 "Back-Left"
   #define TRAMMING_POINT_NAME_3 "Middle-Right"
 
