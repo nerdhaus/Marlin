@@ -1191,7 +1191,10 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 10, 10, 0 }
+
+#define NOZZLE_TO_PROBE_OFFSET_X -45.9
+#define NOZZLE_TO_PROBE_OFFSET_Y 3.2
+#define NOZZLE_TO_PROBE_OFFSET { NOZZLE_TO_PROBE_OFFSET_X, NOZZLE_TO_PROBE_OFFSET_Y, -1.75 } // Stock Ender 3 with CR Touch.
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.

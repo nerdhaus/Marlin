@@ -989,13 +989,28 @@
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
-  #define TRAMMING_POINT_XY { {  20, 20 }, { X_BED_SIZE-20,  20 }, { X_BED_SIZE-20, X_BED_SIZE-20 }, { 20, X_BED_SIZE-20 } }
+  #define TRAMMING_MARGIN 32.0 // Do our tramming right on top of the screws. Why not.
+
+  #define TRAMMING_MARGIN_LEFT max(TRAMMING_MARGIN, NOZZLE_TO_PROBE_OFFSET_X)
+  #define TRAMMING_MARGIN_RIGHT max(TRAMMING_MARGIN, NOZZLE_TO_PROBE_OFFSET_X*-1.0)
+  #define TRAMMING_MARGIN_FRONT max(TRAMMING_MARGIN, NOZZLE_TO_PROBE_OFFSET_Y)
+  #define TRAMMING_MARGIN_BACK max(TRAMMING_MARGIN, NOZZLE_TO_PROBE_OFFSET_Y*-1.0)
+
+  // Four-point leveling
+  // #define TRAMMING_POINT_XY { {  TRAMMING_MARGIN_LEFT, TRAMMING_MARGIN_FRONT }, { X_BED_SIZE-TRAMMING_MARGIN_RIGHT,  TRAMMING_MARGIN_FRONT }, { X_BED_SIZE-TRAMMING_MARGIN_RIGHT, Y_BED_SIZE-TRAMMING_MARGIN_BACK }, { TRAMMING_MARGIN_LEFT, Y_BED_SIZE-TRAMMING_MARGIN_BACK } }
+  // Define position names for probe points.
+  //#define TRAMMING_POINT_NAME_1 "Front-Left"
+  //#define TRAMMING_POINT_NAME_2 "Front-Right"
+  //#define TRAMMING_POINT_NAME_3 "Back-Right"
+  //#define TRAMMING_POINT_NAME_4 "Back-Left"
+
+  // Three-point leveling
+  #define TRAMMING_POINT_XY { {  TRAMMING_MARGIN_LEFT, TRAMMING_MARGIN_FRONT }, { TRAMMING_MARGIN_LEFT,  Y_BED_SIZE-TRAMMING_MARGIN_BACK }, { X_BED_SIZE-TRAMMING_MARGIN_RIGHT, Y_BED_SIZE/2 } }
 
   // Define position names for probe points.
   #define TRAMMING_POINT_NAME_1 "Front-Left"
-  #define TRAMMING_POINT_NAME_2 "Front-Right"
-  #define TRAMMING_POINT_NAME_3 "Back-Right"
-  #define TRAMMING_POINT_NAME_4 "Back-Left"
+  #define TRAMMING_POINT_NAME_2 "Back-Left"
+  #define TRAMMING_POINT_NAME_3 "Middle-Right"
 
   #define RESTORE_LEVELING_AFTER_G35    // Enable to restore leveling setup after operation
   #define REPORT_TRAMMING_MM          // Report Z deviation (mm) for each point relative to the first
