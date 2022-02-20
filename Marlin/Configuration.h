@@ -600,10 +600,10 @@
     #define DEFAULT_Ki_LIST {   1.54,   1.54 }
     #define DEFAULT_Kd_LIST {  76.55,  76.55 }
   #else
-    // Creality Stock - Ender 3 Max tuned
-    #define DEFAULT_Kp  21.39
-    #define DEFAULT_Ki   1.56
-    #define DEFAULT_Kd  73.30
+    // Nerdhaus Ender 3 Max, Tuned as of 2022-02-20
+    #define DEFAULT_Kp  24.61
+    #define DEFAULT_Ki   2.01
+    #define DEFAULT_Kd  75.3
   #endif
 #endif // PIDTEMP
 
