@@ -1005,7 +1005,9 @@
   //#define TRAMMING_POINT_NAME_4 "Back-Left"
 
   // Three-point leveling
-  #define TRAMMING_POINT_XY { {  TRAMMING_MARGIN_LEFT, TRAMMING_MARGIN_FRONT }, { TRAMMING_MARGIN_LEFT,  Y_BED_SIZE-TRAMMING_MARGIN_BACK }, { X_BED_SIZE-TRAMMING_MARGIN_RIGHT, Y_BED_SIZE/2 } }
+  // For the Ender 3 with a stock hotend, there's about 10mm of extra distance beyond the bed surface.
+  // We can use it to squeeze a touch of extra distance.
+  #define TRAMMING_POINT_XY { {  TRAMMING_MARGIN_LEFT, TRAMMING_MARGIN_FRONT }, { TRAMMING_MARGIN_LEFT,  Y_BED_SIZE-TRAMMING_MARGIN_BACK }, { X_MAX_POS-TRAMMING_MARGIN_RIGHT, Y_BED_SIZE/2 } }
 
   // Define position names for probe points.
   #define TRAMMING_POINT_NAME_1 "Front-Left"
