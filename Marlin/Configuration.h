@@ -1195,7 +1195,14 @@
 
 #define NOZZLE_TO_PROBE_OFFSET_X -45.9
 #define NOZZLE_TO_PROBE_OFFSET_Y 3.2
-#define NOZZLE_TO_PROBE_OFFSET { NOZZLE_TO_PROBE_OFFSET_X, NOZZLE_TO_PROBE_OFFSET_Y, -1.75 } // Stock Ender 3 with CR Touch.
+#define  -1.75
+#define NOZZLE_TO_PROBE_OFFSET { NOZZLE_TO_PROBE_OFFSET_X, NOZZLE_TO_PROBE_OFFSET_Y, NOZZLE_TO_PROBE_OFFSET_Z } // Stock Ender 3 with CR Touch.
+
+// Bed screw locations; they're used to calculate tramming and auto-leveling points.
+#define BED_SCREW_INSET 32.5
+#define THREE_POINT_LEVELING_SCREWS { { BED_SCREW_INSET, BED_SCREW_INSET }, { BED_SCREW_INSET, Y_BED_SIZE-BED_SCREW_INSET }, { X_BED_SIZE - BED_SCREW_INSET, Y_BED_SIZE/2 } }
+#define FOUR_POINT_LEVELING_SCREWS { { BED_SCREW_INSET, BED_SCREW_INSET }, { BED_SCREW_INSET, Y_BED_SIZE-BED_SCREW_INSET }, { X_BED_SIZE - BED_SCREW_INSET, Y_BED_SIZE-BED_SCREW_INSET }, { X_BED_SIZE - BED_SCREW_INSET , BED_SCREW_INSET } }
+#define BED_SCREWS_XY THREE_POINT_LEVELING_SCREWS
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
