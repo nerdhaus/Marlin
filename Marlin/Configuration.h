@@ -1195,11 +1195,11 @@
 
 #define NOZZLE_TO_PROBE_OFFSET_X -45.9
 #define NOZZLE_TO_PROBE_OFFSET_Y 3.2
-#define  -1.75
+#define NOZZLE_TO_PROBE_OFFSET_Z -1.75
 #define NOZZLE_TO_PROBE_OFFSET { NOZZLE_TO_PROBE_OFFSET_X, NOZZLE_TO_PROBE_OFFSET_Y, NOZZLE_TO_PROBE_OFFSET_Z } // Stock Ender 3 with CR Touch.
 
 // Bed screw locations; they're used to calculate tramming and auto-leveling points.
-#define BED_SCREW_INSET 32.5
+#define BED_SCREW_INSET 30
 #define THREE_POINT_LEVELING_SCREWS { { BED_SCREW_INSET, BED_SCREW_INSET }, { BED_SCREW_INSET, Y_BED_SIZE-BED_SCREW_INSET }, { X_BED_SIZE - BED_SCREW_INSET, Y_BED_SIZE/2 } }
 #define FOUR_POINT_LEVELING_SCREWS { { BED_SCREW_INSET, BED_SCREW_INSET }, { BED_SCREW_INSET, Y_BED_SIZE-BED_SCREW_INSET }, { X_BED_SIZE - BED_SCREW_INSET, Y_BED_SIZE-BED_SCREW_INSET }, { X_BED_SIZE - BED_SCREW_INSET , BED_SCREW_INSET } }
 #define BED_SCREWS_XY THREE_POINT_LEVELING_SCREWS
@@ -1401,14 +1401,14 @@
 // @section machine
 
 // The size of the printable area
-#define X_BED_SIZE 235
-#define Y_BED_SIZE 235
+#define X_BED_SIZE 230
+#define Y_BED_SIZE 230
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS 0
-#define Y_MIN_POS 0
+#define X_MIN_POS -2.5
+#define Y_MIN_POS -2.5
 #define Z_MIN_POS 0
-#define X_MAX_POS X_BED_SIZE
+#define X_MAX_POS X_BED_SIZE + 20
 #define Y_MAX_POS Y_BED_SIZE
 #define Z_MAX_POS 250
 //#define I_MIN_POS 0

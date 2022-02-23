@@ -989,7 +989,7 @@
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
-  #define TRAMMING_MARGIN 32.0 // Do our tramming right on top of the screws. Why not.
+  #define TRAMMING_MARGIN BED_SCREW_INSET // Do our tramming right on top of the screws. Why not.
 
   #define TRAMMING_MARGIN_LEFT max(TRAMMING_MARGIN, NOZZLE_TO_PROBE_OFFSET_X)
   #define TRAMMING_MARGIN_RIGHT max(TRAMMING_MARGIN, NOZZLE_TO_PROBE_OFFSET_X*-1.0)
