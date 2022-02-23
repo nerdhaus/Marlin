@@ -143,7 +143,7 @@
 //#define BLUETOOTH
 
 // Name displayed in the LCD "Ready" message and Info menu
-#define CUSTOM_MACHINE_NAME "Ender-3 Max 4.2.7"
+#define CUSTOM_MACHINE_NAME "Ender-3 Max"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -624,7 +624,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -871,9 +871,9 @@
 //#define Z2_DRIVER_TYPE A4988
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-//#define I_DRIVER_TYPE  A4988
-//#define J_DRIVER_TYPE  A4988
-//#define K_DRIVER_TYPE  A4988
+//#define I_DRIVER_TYPE A4988
+//#define J_DRIVER_TYPE A4988
+//#define K_DRIVER_TYPE A4988
 #define E0_DRIVER_TYPE TMC2208_STANDALONE
 //#define E1_DRIVER_TYPE A4988
 //#define E2_DRIVER_TYPE A4988
@@ -1571,7 +1571,7 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR  // ENABLE FOR BLTOUCH
+//#define AUTO_BED_LEVELING_BILINEAR
 #define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
