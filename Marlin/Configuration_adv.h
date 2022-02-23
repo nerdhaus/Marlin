@@ -303,7 +303,7 @@
    * and/or decrease WATCH_TEMP_INCREASE. WATCH_TEMP_INCREASE should not be set
    * below 2.
    */
-  #define WATCH_TEMP_PERIOD  60               // Seconds
+  #define WATCH_TEMP_PERIOD  20               // Seconds
   #define WATCH_TEMP_INCREASE 2               // Degrees Celsius
 #endif
 
@@ -311,7 +311,7 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-  #define THERMAL_PROTECTION_BED_PERIOD        100 // Seconds
+  #define THERMAL_PROTECTION_BED_PERIOD        20 // Seconds
   #define THERMAL_PROTECTION_BED_HYSTERESIS     2 // Degrees Celsius
 
   /**
@@ -1467,7 +1467,7 @@
    * an option on the LCD screen to continue the print from the last-known
    * point in the file.
    */
-  #define POWER_LOSS_RECOVERY
+  //#define POWER_LOSS_RECOVERY
   #if ENABLED(POWER_LOSS_RECOVERY)
     #define PLR_ENABLED_DEFAULT   false // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
     //#define BACKUP_POWER_SUPPLY       // Backup power / UPS to move the steppers on power loss
@@ -1963,9 +1963,8 @@
     #endif
   #endif
 
-  //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
+  #define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
-  // ENABLE FOR BLTOUCH
   #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
@@ -2036,10 +2035,10 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
-  #define PROBING_MARGIN_LEFT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*-1.0)
-  #define PROBING_MARGIN_RIGHT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*1.0)
-  #define PROBING_MARGIN_FRONT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*-1.0)
-  #define PROBING_MARGIN_BACK max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*1.0)
+  #define PROBING_MARGIN_LEFT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*1.0)
+  #define PROBING_MARGIN_RIGHT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*-1.0)
+  #define PROBING_MARGIN_FRONT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*1.0)
+  #define PROBING_MARGIN_BACK max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*-1.0)
 #endif
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
