@@ -1,6 +1,6 @@
 /**
  * Marlin 3D Printer Firmware
- * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
+ * Copyright (c) 2021 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
  * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
@@ -333,6 +333,10 @@
    */
   #define WATCH_CHAMBER_TEMP_PERIOD            60 // Seconds
   #define WATCH_CHAMBER_TEMP_INCREASE           2 // Degrees Celsius
+#endif
+
+if ANY(THERMAL_PROTECTION_HOTENDS, THERMAL_PROTECTION_BED, THERMAL_PROTECTION_CHAMBER, THERMAL_PROTECTION_COOLER)
+  #define THERMAL_PROTECTION_VARIANCE_MONITOR     // Detect a sensor malfunction preventing temperature updates
 #endif
 
 /**
@@ -989,12 +993,12 @@
 #if ENABLED(ASSISTED_TRAMMING)
 
   // Define positions for probe points.
-  #define TRAMMING_MARGIN BED_SCREW_INSET // Do our tramming right on top of the screws. Why not.
+  #define TRAMMING_MARGIN BED_SCREW_INSET
 
-  #define TRAMMING_MARGIN_LEFT max(TRAMMING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*-1.0)
-  #define TRAMMING_MARGIN_RIGHT max(TRAMMING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*1.0)
-  #define TRAMMING_MARGIN_FRONT max(TRAMMING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*-1.0)
-  #define TRAMMING_MARGIN_BACK max(TRAMMING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*1.0)
+  #define TRAMMING_MARGIN_LEFT max(TRAMMING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*1.0)
+  #define TRAMMING_MARGIN_RIGHT max(TRAMMING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*-1.0)
+  #define TRAMMING_MARGIN_FRONT max(TRAMMING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*1.0)
+  #define TRAMMING_MARGIN_BACK max(TRAMMING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*-1.0)
 
   // Three-point leveling
   #define TRAMMING_POINT_XY { {  TRAMMING_MARGIN_LEFT, TRAMMING_MARGIN_FRONT }, { TRAMMING_MARGIN_LEFT,  Y_BED_SIZE-TRAMMING_MARGIN_BACK }, { X_BED_SIZE-TRAMMING_MARGIN_RIGHT, Y_BED_SIZE/2 } }
@@ -1186,7 +1190,7 @@
  * vibration and surface artifacts. The algorithm adapts to provide the best possible step smoothing at the
  * lowest stepping frequencies.
  */
-//#define ADAPTIVE_STEP_SMOOTHING
+#define ADAPTIVE_STEP_SMOOTHING
 
 /**
  * Custom Microstepping
@@ -1964,7 +1968,7 @@
   #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
-    //#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
+    #define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
   #endif
 #endif
 
@@ -2001,12 +2005,14 @@
  * Override if the automatically selected points are inadequate.
  */
 #if EITHER(AUTO_BED_LEVELING_3POINT, AUTO_BED_LEVELING_UBL)
-  //#define PROBE_PT_1_X 15
-  //#define PROBE_PT_1_Y 180
-  //#define PROBE_PT_2_X 15
-  //#define PROBE_PT_2_Y 20
-  //#define PROBE_PT_3_X 170
-  //#define PROBE_PT_3_Y 20
+  #define PROBE_PT_1_X max(BED_SCREW_INSET*1.0, NOZZLE_TO_PROBE_OFFSET_X*1.0)
+  #define PROBE_PT_1_Y max(BED_SCREW_INSET*1.0, NOZZLE_TO_PROBE_OFFSET_Y*1.0)
+
+  #define PROBE_PT_2_X max(BED_SCREW_INSET*1.0, NOZZLE_TO_PROBE_OFFSET_X*1.0)
+  #define PROBE_PT_2_Y (Y_BED_SIZE - max(BED_SCREW_INSET*1.0, NOZZLE_TO_PROBE_OFFSET_Y*-1.0))
+
+  #define PROBE_PT_3_X (X_BED_SIZE - max(BED_SCREW_INSET*1.0, NOZZLE_TO_PROBE_OFFSET_X*-1.0))
+  #define PROBE_PT_3_Y (Y_BED_SIZE / 2)
 #endif
 
 /**
@@ -2029,10 +2035,10 @@
  * the probe to be unable to reach any points.
  */
 #if PROBE_SELECTED && !IS_KINEMATIC
-  #define PROBING_MARGIN_LEFT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*-1.0)
-  #define PROBING_MARGIN_RIGHT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*1.0)
-  #define PROBING_MARGIN_FRONT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*-1.0)
-  #define PROBING_MARGIN_BACK max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*1.0)
+  #define PROBING_MARGIN_LEFT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*1.0)
+  #define PROBING_MARGIN_RIGHT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_X*-1.0)
+  #define PROBING_MARGIN_FRONT max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*1.0)
+  #define PROBING_MARGIN_BACK max(PROBING_MARGIN*1.0, NOZZLE_TO_PROBE_OFFSET_Y*-1.0)
 #endif
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
