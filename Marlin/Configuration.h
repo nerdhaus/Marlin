@@ -1210,7 +1210,7 @@
 
 #define NOZZLE_TO_PROBE_OFFSET_X -45.9
 #define NOZZLE_TO_PROBE_OFFSET_Y -3.2
-#define NOZZLE_TO_PROBE_OFFSET_Z -2.75
+#define NOZZLE_TO_PROBE_OFFSET_Z -2.175
 #define NOZZLE_TO_PROBE_OFFSET { NOZZLE_TO_PROBE_OFFSET_X, NOZZLE_TO_PROBE_OFFSET_Y, NOZZLE_TO_PROBE_OFFSET_Z } // Stock Ender 3 with CR Touch.
 
 // Bed screw locations; they're used to calculate tramming and auto-leveling points.
